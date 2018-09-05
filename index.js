@@ -3,14 +3,14 @@ const path = require('path');
 const generatePassword = require('password-generator');
 
 const app = express();
-/*
-var mysql      = require('mysql');
 
+var mysql      = require('mysql');
+//--host=us-cdbr-iron-east-01.cleardb.net --user=b1df048fa91919 --password=71e3f228 --reconnect heroku_3260cc8dc761cd5
 var connection = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : '',
-	database : 'test'
+	host     : 'us-cdbr-iron-east-01.cleardb.net',
+	user     : 'b1df048fa91919',
+	password : '71e3f228',
+	database : 'heroku_3260cc8dc761cd5'
 });
 connection.connect();
 app.get('/api/users', (req, res) => {
@@ -31,7 +31,7 @@ app.get('/api/users', (req, res) => {
 		}
 	});
 });
-*/
+
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
