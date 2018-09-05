@@ -4,33 +4,23 @@ const generatePassword = require('password-generator');
 
 const app = express();
 
-console.log("DB_HOST: " + process.env.DB_HOST);
-console.log("DB_USER: " + process.env.DB_USER);
-console.log("DB_PASS: " + process.env.DB_PASS);
-console.log("DB_NAME: " + process.env.DB_NAME);
-
 var mysql      = require('mysql');
-//--host=us-cdbr-iron-east-01.cleardb.net --user=b1df048fa91919 --password=71e3f228 --reconnect heroku_3260cc8dc761cd5
+
 var connection = mysql.createConnection({
-	host     : process.env.DB_HOST,
-	user     : process.env.DB_USER,
-	password : process.env.DB_PASS,
-	database : process.env.DB_NAME
+	host     : process.env.AWS_HVZ_HOST,
+	user     : process.env.AWS_HVZ_USER,
+	password : process.env.AWS_HVZ_PASS,
+	database : process.env.AWS_HVZ_NAME
 });
+
 connection.connect();
 app.get('/api/users', (req, res) => {
-	//connection.connect();
 	connection.query('SELECT * from users', function(err, rows, fields) {
 		if (!err) {
-      //res.send(rows);
-      //var toSend = JSON.stringify( { data: [{ id: 1, name: 'Josh' }, {id: 2, name: Jeremy }] });
-      //console.log(toSend);
-
       toSend = {
         data: JSON.stringify(rows)
       };
       res.send(rows);
-      //res.send({ data: 'Hello From Express' });
 		} else {
 			console.log('Error while performing Query.');
 		}
