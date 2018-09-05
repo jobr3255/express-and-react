@@ -1,15 +1,20 @@
 {
   "name": "example-create-react-app-express",
   "version": "1.0.0",
-  "scripts": {
-    "client": "cd client && yarn start",
-    "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
-  },
+  "main": "index.js",
+  "license": "MIT",
   "dependencies": {
-    "express": "^4.16.2",
+    "express": "^4.15.3",
+    "password-generator": "^2.1.0",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.4"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && yarn && yarn run build",
+    "client": "cd client && yarn run build && yarn start",
+    "server": "node index.js",
+    "dev": "concurrently --kill-others-on-fail 'yarn server' 'yarn client'"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"
