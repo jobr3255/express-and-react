@@ -3,7 +3,7 @@ const path = require('path');
 const generatePassword = require('password-generator');
 
 const app = express();
-
+/*
 var mysql      = require('mysql');
 
 var connection = mysql.createConnection({
@@ -31,7 +31,7 @@ app.get('/api/users', (req, res) => {
 		}
 	});
 });
-
+*/
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
