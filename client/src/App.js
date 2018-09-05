@@ -10,9 +10,10 @@ class App extends Component {
   };
 
   componentDidMount() {
-    //this.setState({ response: res.data })
+    // this.setState({ response: res.data })
+    // this.setState({ response: res })
     this.callApi()
-      .then(res => this.setState({ response: res }) )
+      .then(res => console.log(res) )
       .catch(err => console.log(err));
   }
 
