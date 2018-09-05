@@ -4,13 +4,18 @@ const generatePassword = require('password-generator');
 
 const app = express();
 
+console.log("DB_HOST: " + process.env.DB_HOST);
+console.log("DB_USER: " + process.env.DB_USER);
+console.log("DB_PASS: " + process.env.DB_PASS);
+console.log("DB_NAME: " + process.env.DB_NAME);
+
 var mysql      = require('mysql');
 //--host=us-cdbr-iron-east-01.cleardb.net --user=b1df048fa91919 --password=71e3f228 --reconnect heroku_3260cc8dc761cd5
 var connection = mysql.createConnection({
-	host     : 'us-cdbr-iron-east-01.cleardb.net',
-	user     : 'b1df048fa91919',
-	password : '71e3f228',
-	database : 'heroku_3260cc8dc761cd5'
+	host     : process.env.DB_HOST,
+	user     : process.env.DB_USER,
+	password : process.env.DB_PASS,
+	database : process.env.DB_NAME
 });
 connection.connect();
 app.get('/api/users', (req, res) => {
